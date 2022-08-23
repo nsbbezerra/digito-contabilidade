@@ -8,6 +8,7 @@ import * as teamAnimation from "../assets/team.json";
 import ReactLottie from "../components/Lottie";
 import Link from "next/link";
 import Footer from "../components/Footer";
+import { configs } from "../configs";
 
 const Home: NextPage = () => {
   return (
@@ -30,19 +31,22 @@ const Home: NextPage = () => {
             Quem Somos?
           </h1>
           <p className="text-lg text-gray-700">
-            Somos uma empres 100% digital, especializada em contabilidade.
+            Somos uma empresa 100% digital, especializada em contabilidade.
           </p>
           <p className="text-lg text-gray-700">
             Te ajudamos a entender os números e cuidamos de tudo para que dessa
             forma você foque somente nos negócios.
           </p>
 
-          <a
-            href="#"
-            className="bg-green-600 w-fit px-5 flex items-center rounded-md shadow-lg text-white text-lg h-12 mt-5 hover:bg-green-700 active:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-500"
-          >
-            Fale Conosco
-          </a>
+          <Link href={`https://wa.me/${configs.whatsapp}`} passHref>
+            <a
+              target={"_blank"}
+              href="#"
+              className="bg-green-600 w-fit px-5 flex items-center rounded-md shadow-lg text-white text-lg h-12 mt-5 hover:bg-green-700 active:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-500"
+            >
+              Fale Conosco
+            </a>
+          </Link>
         </div>
       </section>
 
@@ -143,12 +147,15 @@ const Home: NextPage = () => {
           </div>
         </div>
 
-        <a
-          href="#"
-          className="bg-green-600 w-fit px-5 flex items-center rounded-md shadow-lg text-white text-lg h-12 mt-5 hover:bg-green-700 active:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-500"
-        >
-          Fale Conosco
-        </a>
+        <Link href={`https://wa.me/${configs.whatsapp}`} passHref>
+          <a
+            target={"_blank"}
+            href="#"
+            className="bg-green-600 w-fit px-5 flex items-center rounded-md shadow-lg text-white text-lg h-12 mt-5 hover:bg-green-700 active:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-500"
+          >
+            Fale Conosco
+          </a>
+        </Link>
       </section>
 
       <section className="w-full bg-blue-50 py-16" id="artigos">
