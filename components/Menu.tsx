@@ -74,13 +74,15 @@ export default function Menu() {
                 Artigos
               </a>
             </Link>
-            <a
-              href="#"
-              className="text-blue-700 cursor-pointer hover:text-blue-800 active:text-blue-700 flex items-center gap-1 font-bold"
-            >
-              <PhoneIcon className="w-4 h-4" />
-              Contato
-            </a>
+            <Link href="#contato" passHref>
+              <a
+                href="#"
+                className="text-blue-700 cursor-pointer hover:text-blue-800 active:text-blue-700 flex items-center gap-1 font-bold"
+              >
+                <PhoneIcon className="w-4 h-4" />
+                Contato
+              </a>
+            </Link>
           </div>
 
           <button className="border border-blue-700 p-1 rounded-md hover:bg-blue-100 active:bg-blue-300 lg:hidden">
