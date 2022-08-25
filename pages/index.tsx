@@ -10,6 +10,7 @@ import Link from "next/link";
 import Footer from "../components/Footer";
 import { configs } from "../configs";
 import Panel from "../components/Panel";
+import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
 
 const Home: NextPage = () => {
   return (
@@ -78,8 +79,8 @@ const Home: NextPage = () => {
           Nossos serviços
         </h3>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-10 my-16">
-          <div className="flex flex-col items-center justify-center gap-2 transition-all delay-75 hover:scale-105">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-5 mt-10">
+          <div className="flex flex-col items-center justify-center gap-2 p-2 rounded-md border">
             <div className="w-fit">
               <Image
                 src="/img/empresa.png"
@@ -89,10 +90,10 @@ const Home: NextPage = () => {
                 alt="Real Contabilidade"
               />
             </div>
-            <span className="text-center font-bold">SOCIETÁRIO</span>
+            <span className="text-center">SOCIETÁRIO</span>
           </div>
 
-          <div className="flex flex-col items-center justify-center gap-2 transition-all delay-75 hover:scale-105">
+          <div className="flex flex-col items-center justify-center gap-2 p-2 rounded-md border">
             <div className="w-fit">
               <Image
                 src="/img/contabilidade.png"
@@ -102,10 +103,10 @@ const Home: NextPage = () => {
                 alt="Real Contabilidade"
               />
             </div>
-            <span className="text-center font-bold">CONTABILIDADE</span>
+            <span className="text-center">CONTABILIDADE</span>
           </div>
 
-          <div className="flex flex-col items-center justify-center gap-2 transition-all delay-75 hover:scale-105">
+          <div className="flex flex-col items-center justify-center gap-2 p-2 rounded-md border">
             <div className="w-fit">
               <Image
                 src="/img/recibo.png"
@@ -115,10 +116,10 @@ const Home: NextPage = () => {
                 alt="Real Contabilidade"
               />
             </div>
-            <span className="text-center font-bold">FISCAL / TRIBUTÁRIO</span>
+            <span className="text-center">FISCAL / TRIBUTÁRIO</span>
           </div>
 
-          <div className="flex flex-col items-center justify-center gap-2 transition-all delay-75 hover:scale-105">
+          <div className="flex flex-col items-center justify-center gap-2 p-2 rounded-md border">
             <div className="w-fit">
               <Image
                 src="/img/leao.png"
@@ -128,10 +129,10 @@ const Home: NextPage = () => {
                 alt="Real Contabilidade"
               />
             </div>
-            <span className="text-center font-bold">IMPOSTO DE RENDA</span>
+            <span className="text-center">IMPOSTO DE RENDA</span>
           </div>
 
-          <div className="flex flex-col items-center justify-center gap-2 transition-all delay-75 hover:scale-105">
+          <div className="flex flex-col items-center justify-center gap-2 p-2 rounded-md border">
             <div className="w-fit">
               <Image
                 src="/img/pessoal.png"
@@ -141,7 +142,7 @@ const Home: NextPage = () => {
                 alt="Real Contabilidade"
               />
             </div>
-            <span className="text-center font-bold">PESSOAL</span>
+            <span className="text-center">PESSOAL</span>
           </div>
         </div>
       </section>
@@ -149,13 +150,13 @@ const Home: NextPage = () => {
       <section className="w-full bg-blue-50 py-16" id="artigos">
         <div className="container mx-auto px-10 lg:px-20">
           <h4 className="font-bold text-4xl border-b-2 border-b-green-600 w-fit pb-2 mb-5">
-            Artigos Recentes
+            Artigos recentes
           </h4>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
             <Link href="/" passHref>
               <a className="hover:underline">
-                <div className="bg-white rounded-md border overflow-hidden shadow-md">
+                <div className="bg-white rounded-md border overflow-hidden shadow-sm">
                   <div className="w-full h-fit">
                     <Image
                       src="https://img.freepik.com/fotos-gratis/empresarios-que-trabalham-em-financas-e-contabilidade-analisar-financas_74952-1411.jpg?w=2000"
@@ -177,7 +178,7 @@ const Home: NextPage = () => {
             </Link>
             <Link href="/" passHref>
               <a className="hover:underline">
-                <div className="bg-white rounded-md border overflow-hidden shadow-md">
+                <div className="bg-white rounded-md border overflow-hidden shadow-sm">
                   <div className="w-full h-fit">
                     <Image
                       src="https://img.freepik.com/fotos-gratis/empresarios-que-trabalham-em-financas-e-contabilidade-analisar-financas_74952-1411.jpg?w=2000"
@@ -199,7 +200,7 @@ const Home: NextPage = () => {
             </Link>
             <Link href="/" passHref>
               <a className="hover:underline">
-                <div className="bg-white rounded-md border overflow-hidden shadow-md">
+                <div className="bg-white rounded-md border overflow-hidden shadow-sm">
                   <div className="w-full h-fit">
                     <Image
                       src="https://img.freepik.com/fotos-gratis/empresarios-que-trabalham-em-financas-e-contabilidade-analisar-financas_74952-1411.jpg?w=2000"
@@ -220,6 +221,13 @@ const Home: NextPage = () => {
               </a>
             </Link>
           </div>
+
+          <Link href="/artigos" passHref>
+            <a className="mt-5 flex items-center gap-2 text-sky-700 hover:underline text-lg cursor-pointer font-semibold w-fit">
+              <MagnifyingGlassIcon className="w-5 h-5" />
+              Veja mais
+            </a>
+          </Link>
         </div>
       </section>
 

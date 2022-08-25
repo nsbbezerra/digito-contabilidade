@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { Fragment } from "react";
-import { InboxIcon } from "@heroicons/react/24/outline";
+import { InboxIcon, PhoneIcon } from "@heroicons/react/24/outline";
 import Link from "next/link";
 import { configs } from "../configs";
 
@@ -12,7 +12,7 @@ export default function Footer() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
             <div className="w-full">
               <div className="flex items-center gap-3">
-                <div className="w-16 h-16">
+                <div className="w-[70px] h-[70px]">
                   <Image
                     src="/img/digitos300.png"
                     width={100}
@@ -37,13 +37,24 @@ export default function Footer() {
                 Rua Machado de Assis, São João, 824, CEP 77807140, Araguaína -
                 TO
               </p>
-              <a
-                target={"_blank"}
-                className="flex items-center gap-2 text-sky-200 mt-2 hover:underline cursor-pointer"
-              >
-                <InboxIcon className="w-5 h-5" />
-                digitos_contabilidade@hotmail.com
-              </a>
+              <Link href={`mailto:${configs.email}`} passHref>
+                <a
+                  target={"_blank"}
+                  className="flex items-center gap-2 text-sky-200 mt-2 hover:underline cursor-pointer"
+                >
+                  <InboxIcon className="w-5 h-5" />
+                  {configs.email}
+                </a>
+              </Link>
+              <Link href={`tel:${configs.phone}`} passHref>
+                <a
+                  target={"_blank"}
+                  className="flex items-center gap-2 text-sky-200 mt-2 hover:underline cursor-pointer"
+                >
+                  <PhoneIcon className="w-5 h-5" />
+                  {configs.phone}
+                </a>
+              </Link>
             </div>
             <div className="w-full">
               <span className="text-4xl font-semibold text-green-500">
