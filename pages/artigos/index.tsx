@@ -7,7 +7,7 @@ import Menu from "../../components/Menu";
 
 export default function Articles() {
   const Card = () => (
-    <Link href="/" passHref>
+    <Link href="/artigos/artigo" passHref>
       <a className="hover:underline">
         <div className="bg-white rounded-md border overflow-hidden shadow-sm">
           <div className="w-full h-fit">
