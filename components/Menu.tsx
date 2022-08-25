@@ -7,13 +7,14 @@ import {
   TagIcon,
   PhoneIcon,
   PencilIcon,
+  UserIcon,
 } from "@heroicons/react/24/outline";
 import Link from "next/link";
 
 export default function Menu() {
   return (
     <Fragment>
-      <header className="w-full h-16 shadow-sm sticky top-0 bg-white bg-opacity-90 backdrop-blur-sm z-30">
+      <div className="w-full h-16 shadow-sm sticky top-0 bg-white bg-opacity-90 backdrop-blur-sm z-30">
         <nav className="container mx-auto px-10 lg:px-20 h-16 flex items-center justify-between">
           <div className="flex gap-2 items-center">
             <div className="w-10 h-10">
@@ -25,15 +26,6 @@ export default function Menu() {
                 alt="Real Contabilidade"
                 quality={100}
               />
-            </div>
-            <div className="h-10 border-l border-l-sky-700" />
-            <div className="flex flex-col">
-              <span className="text-sky-700 font-semibold text-sm -mb-1 select-none">
-                DIGITOS
-              </span>
-              <span className="text-sky-700 font-semibold text-lg select-none">
-                CONTABILIDADE
-              </span>
             </div>
           </div>
 
@@ -83,13 +75,21 @@ export default function Menu() {
                 Contato
               </a>
             </Link>
+
+            <a
+              href="#"
+              className="bg-green-600 w-fit px-5 flex items-center gap-2 rounded-md text-white h-10 hover:bg-green-700 active:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-500"
+            >
+              <UserIcon className="w-4 h-4" />
+              Área do cliente
+            </a>
           </div>
 
-          <button className="border border-blue-700 p-1 rounded-md hover:bg-blue-100 active:bg-blue-300 lg:hidden">
+          <button className="border border-blue-700 h-10 w-10 flex items-center justify-center rounded-md hover:bg-blue-100 active:bg-blue-300 lg:hidden">
             <Bars3Icon className="w-6 h-6 text-blue-700" />
           </button>
         </nav>
-      </header>
+      </div>
     </Fragment>
   );
 }

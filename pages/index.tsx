@@ -9,31 +9,33 @@ import ReactLottie from "../components/Lottie";
 import Link from "next/link";
 import Footer from "../components/Footer";
 import { configs } from "../configs";
+import Panel from "../components/Panel";
 
 const Home: NextPage = () => {
   return (
     <Fragment>
       <HeaderApp title="Digitos Contabilidade" />
       <Menu />
+      <Panel />
       <section
-        className="container mx-auto px-10 lg:px-20 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 py-16 items-center justify-items-center"
+        className="container mx-auto px-10 lg:px-20 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-10 py-16 items-center justify-items-center"
         id="quem-somos"
       >
-        <div className="w-64 sm:w-72 md:w-full">
+        <div className="w-64 sm:w-72 md:w-3/4">
           <ReactLottie
             animation={statsAnimation}
             width="100%"
             height={"100%"}
           />
         </div>
-        <div className="w-full flex flex-col lg:col-span-2">
+        <div className="w-full flex flex-col">
           <h1 className="font-bold text-4xl border-b-2 border-b-green-600 w-fit pb-2 mb-5">
-            Quem Somos?
+            Quem somos?
           </h1>
-          <p className="text-lg text-gray-700">
+          <p className="text-lg text-gray-700 max-w-xl">
             Somos uma empresa 100% digital, especializada em contabilidade.
           </p>
-          <p className="text-lg text-gray-700">
+          <p className="text-lg text-gray-700 max-w-xl">
             Te ajudamos a entender os números e cuidamos de tudo para que dessa
             forma você foque somente nos negócios.
           </p>
@@ -54,11 +56,11 @@ const Home: NextPage = () => {
         <div className="container mx-auto px-10 lg:px-20 grid grid-cols-1 md:grid-cols-2 gap-10 items-center justify-items-center">
           <div className="w-full">
             <h2 className="font-bold text-4xl border-b-2 border-b-green-600 w-fit pb-2 mb-5">
-              Nossa Equipe
+              Nossa equipe
             </h2>
             <p className="text-xl mt-5 text-gray-700">
               Um time qualificado que vai te ajudar a tomar decisões mais
-              acertivas, fazendo assim alavancar seu negócio.
+              assertivas, fazendo assim alavancar seu negócio.
             </p>
           </div>
           <div className="w-full">
@@ -73,7 +75,7 @@ const Home: NextPage = () => {
 
       <section className="container mx-auto py-16 px-10 lg:px-20" id="servicos">
         <h3 className="font-bold text-4xl border-b-2 border-b-green-600 w-fit pb-2 mb-5">
-          Nossos Serviços
+          Nossos serviços
         </h3>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-10 my-16">
@@ -87,7 +89,7 @@ const Home: NextPage = () => {
                 alt="Real Contabilidade"
               />
             </div>
-            <span className="text-center font-bold text-lg">SOCIETÁRIO</span>
+            <span className="text-center font-bold">SOCIETÁRIO</span>
           </div>
 
           <div className="flex flex-col items-center justify-center gap-2 transition-all delay-75 hover:scale-105">
@@ -100,7 +102,7 @@ const Home: NextPage = () => {
                 alt="Real Contabilidade"
               />
             </div>
-            <span className="text-center font-bold text-lg">CONTABILIDADE</span>
+            <span className="text-center font-bold">CONTABILIDADE</span>
           </div>
 
           <div className="flex flex-col items-center justify-center gap-2 transition-all delay-75 hover:scale-105">
@@ -113,9 +115,7 @@ const Home: NextPage = () => {
                 alt="Real Contabilidade"
               />
             </div>
-            <span className="text-center font-bold text-lg">
-              FISCAL / TRIBUTÁRIO
-            </span>
+            <span className="text-center font-bold">FISCAL / TRIBUTÁRIO</span>
           </div>
 
           <div className="flex flex-col items-center justify-center gap-2 transition-all delay-75 hover:scale-105">
@@ -128,9 +128,7 @@ const Home: NextPage = () => {
                 alt="Real Contabilidade"
               />
             </div>
-            <span className="text-center font-bold text-lg">
-              IMPOSTO DE RENDA
-            </span>
+            <span className="text-center font-bold">IMPOSTO DE RENDA</span>
           </div>
 
           <div className="flex flex-col items-center justify-center gap-2 transition-all delay-75 hover:scale-105">
@@ -143,19 +141,9 @@ const Home: NextPage = () => {
                 alt="Real Contabilidade"
               />
             </div>
-            <span className="text-center font-bold text-lg">PESSOAL</span>
+            <span className="text-center font-bold">PESSOAL</span>
           </div>
         </div>
-
-        <Link href={`https://wa.me/${configs.whatsapp}`} passHref>
-          <a
-            target={"_blank"}
-            href="#"
-            className="bg-green-600 w-fit px-5 flex items-center rounded-md shadow-lg text-white text-lg h-12 mt-5 hover:bg-green-700 active:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-500"
-          >
-            Fale Conosco
-          </a>
-        </Link>
       </section>
 
       <section className="w-full bg-blue-50 py-16" id="artigos">
