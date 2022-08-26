@@ -103,7 +103,7 @@ export default function Register() {
             )}
             <div>
               <label>Email</label>
-              <input type="text" className="input" placeholder="Email" />
+              <input type="email" className="input" placeholder="Email" />
             </div>
 
             <div>
@@ -214,8 +214,25 @@ export default function Register() {
             </div>
           </div>
 
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+            <div>
+              <label>
+                Usuário <span className="text-red-600">*</span>
+              </label>
+              <input type="text" className="input" placeholder={"Usuário"} />
+            </div>
+
+            <div>
+              <label>
+                Senha
+                <span className="text-red-600">*</span>
+              </label>
+              <input type="password" className="input" placeholder={"Senha"} />
+            </div>
+          </div>
+
           <button className="button-blue mt-5">
-            <InboxArrowDownIcon className="w-4 h-5" />
+            <InboxArrowDownIcon className="w-4 h-4" />
             Cadastrar
           </button>
         </div>

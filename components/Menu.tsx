@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { Fragment, useState } from "react";
+import { Fragment, useContext, useState } from "react";
 import {
   Bars3Icon,
   HomeIcon,
@@ -15,9 +15,14 @@ import {
 } from "@heroicons/react/24/outline";
 import Link from "next/link";
 import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
+import * as Dialog from "@radix-ui/react-dialog";
+
+import LoginContext from "../context/login";
 
 export default function Menu() {
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
+  const { state: isLoginOpen, setState: setIsLoginOpen } =
+    useContext(LoginContext);
 
   const MenuItems = () => (
     <div className="items-start gap-7 flex flex-col xl:flex-row xl:items-center">
@@ -76,7 +81,10 @@ export default function Menu() {
         <DropdownMenu.Portal>
           <DropdownMenu.Content className="bg-white backdrop-blur-sm bg-opacity-90 rounded-md z-50 py-2 px-2 border shadow-lg mt-3 w-48">
             <DropdownMenu.Label />
-            <DropdownMenu.Item className="text-gray-800 py-1 px-2 rounded-md flex items-center gap-2 hover:bg-sky-700 cursor-pointer hover:text-white active:bg-sky-800 focus:outline-none focus:ring-2 focus:ring-sky-500">
+            <DropdownMenu.Item
+              className="text-gray-800 py-1 px-2 rounded-md flex items-center gap-2 hover:bg-sky-700 cursor-pointer hover:text-white active:bg-sky-800 focus:outline-none focus:ring-2 focus:ring-sky-500"
+              onClick={() => setIsLoginOpen({ isOpen: !isLoginOpen.isOpen })}
+            >
               <ArrowRightOnRectangleIcon className="w-4 h-4" />
               Login
             </DropdownMenu.Item>
@@ -143,6 +151,47 @@ export default function Menu() {
           </div>
         )}
       </div>
+
+      <Dialog.Root
+        open={isLoginOpen.isOpen}
+        onOpenChange={() => setIsLoginOpen({ isOpen: !isLoginOpen.isOpen })}
+      >
+        <Dialog.Trigger asChild />
+        <Dialog.Portal>
+          <Dialog.Overlay className="fixed top-0 right-0 left-0 bottom-0 bg-black z-50 bg-opacity-60 backdrop-blur-sm" />
+          <Dialog.Content className="fixed w-[80%] left-[10%] right-[10%] sm:w-[50%] sm:left-[25%] sm:right-[25%] md:w-[40%] md:left-[30%] md:right-[30%] lg:w-[30%] bg-white shadow-lg rounded-md top-[20%] z-50 lg:left-[35%] lg:right-[35%]">
+            <Dialog.Title className="px-4 py-3 text-lg font-semibold">
+              Login
+            </Dialog.Title>
+            <Dialog.Close
+              asChild
+              className="rounded-full bg-black bg-opacity-10 h-7 w-7 absolute right-4 top-3 p-1 cursor-pointer hover:bg-opacity-20 active:bg-opacity-10"
+            >
+              <XMarkIcon />
+            </Dialog.Close>
+
+            <div className="p-5 flex flex-col gap-3">
+              <div>
+                <label>Usuário</label>
+                <input type="text" className="input" placeholder={"Usuário"} />
+              </div>
+              <div>
+                <label>Senha</label>
+                <input
+                  type="password"
+                  className="input"
+                  placeholder={"Senha"}
+                />
+              </div>
+
+              <button className="button-green-full mt-3">
+                <ArrowRightOnRectangleIcon className="w-5 h-5" />
+                Login
+              </button>
+            </div>
+          </Dialog.Content>
+        </Dialog.Portal>
+      </Dialog.Root>
     </Fragment>
   );
 }

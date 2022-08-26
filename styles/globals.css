@@ -19,3 +19,7 @@ html {
 .button-blue {
   @apply h-12 flex px-5 items-center rounded-md bg-sky-700 w-fit text-white gap-2 hover:bg-sky-800 active:bg-sky-700 focus:outline-none focus:ring-2 focus:ring-sky-500;
 }
+
+.button-green-full {
+  @apply h-14 flex px-5 items-center rounded-md bg-green-600 w-full justify-center text-white gap-2 hover:bg-green-700 active:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-400 text-lg;
+}
