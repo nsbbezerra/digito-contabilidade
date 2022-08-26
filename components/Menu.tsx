@@ -20,7 +20,7 @@ export default function Menu() {
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
 
   const MenuItems = () => (
-    <div className="items-start gap-7 flex flex-col lg:flex-row lg:items-center">
+    <div className="items-start gap-7 flex flex-col xl:flex-row xl:items-center">
       <Link href={"/"} passHref>
         <a
           href="#"
@@ -76,15 +76,15 @@ export default function Menu() {
         <DropdownMenu.Portal>
           <DropdownMenu.Content className="bg-white backdrop-blur-sm bg-opacity-90 rounded-md z-50 py-2 px-2 border shadow-lg mt-3 w-48">
             <DropdownMenu.Label />
-            <DropdownMenu.Item className="text-gray-800 py-1 px-2 rounded-md flex items-center gap-2 hover:bg-sky-700 cursor-pointer hover:text-white active:bg-sky-800 transition-all delay-75">
+            <DropdownMenu.Item className="text-gray-800 py-1 px-2 rounded-md flex items-center gap-2 hover:bg-sky-700 cursor-pointer hover:text-white active:bg-sky-800 focus:outline-none focus:ring-2 focus:ring-sky-500">
               <ArrowRightOnRectangleIcon className="w-4 h-4" />
               Login
             </DropdownMenu.Item>
-            <DropdownMenu.Item className="text-gray-800 py-1 px-2 rounded-md flex items-center gap-2 hover:bg-sky-700 cursor-pointer hover:text-white active:bg-sky-800 transition-all delay-75">
+            <DropdownMenu.Item className="text-gray-800 py-1 px-2 rounded-md flex items-center gap-2 hover:bg-sky-700 cursor-pointer hover:text-white active:bg-sky-800 focus:outline-none focus:ring-2 focus:ring-sky-500">
               <InboxArrowDownIcon className="w-4 h-4" />
               Cadastre-se
             </DropdownMenu.Item>
-            <DropdownMenu.Item className="text-gray-800 py-1 px-2 rounded-md flex items-center gap-2 hover:bg-sky-700 cursor-pointer hover:text-white active:bg-sky-800 transition-all delay-75">
+            <DropdownMenu.Item className="text-gray-800 py-1 px-2 rounded-md flex items-center gap-2 hover:bg-sky-700 cursor-pointer hover:text-white active:bg-sky-800 focus:outline-none focus:ring-2 focus:ring-sky-500">
               <IdentificationIcon className="w-4 h-4" />
               Meus dados
             </DropdownMenu.Item>
@@ -109,14 +109,22 @@ export default function Menu() {
                 quality={100}
               />
             </div>
+            <div className="flex flex-col">
+              <span className="text-sky-700 text-sm -mb-1 select-none">
+                DÍGITOS
+              </span>
+              <span className="text-sky-700 font-bold text-base select-none ">
+                CONTABILIDADE
+              </span>
+            </div>
           </div>
 
-          <div className="hidden lg:block">
+          <div className="hidden xl:block">
             <MenuItems />
           </div>
 
           <button
-            className="border border-sky-700 h-10 w-10 flex items-center justify-center rounded-md hover:bg-sky-100 active:bg-sky-300 lg:hidden"
+            className="border border-sky-700 h-10 w-10 flex items-center justify-center rounded-md hover:bg-sky-100 active:bg-sky-300 xl:hidden"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
           >
             {isMenuOpen ? (

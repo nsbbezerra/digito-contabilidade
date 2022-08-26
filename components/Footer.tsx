@@ -25,7 +25,7 @@ export default function Footer() {
                 <div className="h-16 border-l border-l-sky-200" />
                 <div className="flex flex-col">
                   <span className="text-sky-200 font-semibold text-2xl -mb-1 select-none">
-                    DIGITOS
+                    DíGITOS
                   </span>
                   <span className="text-sky-200 font-semibold text-3xl select-none">
                     CONTABILIDADE

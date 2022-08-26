@@ -1,7 +1,3 @@
-import ReactLottie from "./Lottie";
-import * as minusAnimation from "../assets/minus.json";
-import * as plusAnimation from "../assets/plus.json";
-import * as xAnimation from "../assets/x.json";
 import { Fragment } from "react";
 import Image from "next/image";
 
@@ -9,7 +5,7 @@ export default function Panel() {
   return (
     <Fragment>
       <header className="w-full bg-gradient-to-tr from-sky-50 to-sky-300 py-12">
-        <div className="container mx-auto px-10 lg:px-20 grid grid-cols-1 gap-10 items-center justify-items-center">
+        <div className="container mx-auto px-10 lg:px-20 grid grid-cols-1 gap-5 items-center justify-items-center">
           <div className="w-fit relative">
             <div className="flex items-center gap-10 flex-col">
               <div className="w-[80px] h-[80px]">
@@ -31,24 +27,6 @@ export default function Panel() {
                 </span>
               </div>
             </div>
-
-            <div className="w-[50px] h-[50px] absolute left-12 top-[40%]">
-              <ReactLottie
-                animation={plusAnimation}
-                width="100%"
-                height="100%"
-              />
-            </div>
-            <div className="w-[50px] h-[50px] absolute right-10 top-1/2">
-              <ReactLottie
-                animation={minusAnimation}
-                width="100%"
-                height="100%"
-              />
-            </div>
-            <div className="w-[50px] h-[50px] absolute right-[50%] left-[50%] -bottom-10">
-              <ReactLottie animation={xAnimation} width="100%" height="100%" />
-            </div>
           </div>
 
           <div className="flex flex-col items-center max-w-lg">
@@ -56,7 +34,7 @@ export default function Panel() {
               Multiplicando{" "}
               <span className="text-green-700 font-bold">resultados</span> e
               compartilhando{" "}
-              <span className="text-green-700 font-bold">conhecimentos</span>
+              <span className="text-green-700 font-bold">conhecimento</span>
             </h1>
 
             <a
