@@ -80,10 +80,12 @@ export default function Menu() {
               <ArrowRightOnRectangleIcon className="w-4 h-4" />
               Login
             </DropdownMenu.Item>
-            <DropdownMenu.Item className="text-gray-800 py-1 px-2 rounded-md flex items-center gap-2 hover:bg-sky-700 cursor-pointer hover:text-white active:bg-sky-800 focus:outline-none focus:ring-2 focus:ring-sky-500">
-              <InboxArrowDownIcon className="w-4 h-4" />
-              Cadastre-se
-            </DropdownMenu.Item>
+            <Link href={"/cadastro"} passHref>
+              <DropdownMenu.Item className="text-gray-800 py-1 px-2 rounded-md flex items-center gap-2 hover:bg-sky-700 cursor-pointer hover:text-white active:bg-sky-800 focus:outline-none focus:ring-2 focus:ring-sky-500">
+                <InboxArrowDownIcon className="w-4 h-4" />
+                Cadastre-se
+              </DropdownMenu.Item>
+            </Link>
             <DropdownMenu.Item className="text-gray-800 py-1 px-2 rounded-md flex items-center gap-2 hover:bg-sky-700 cursor-pointer hover:text-white active:bg-sky-800 focus:outline-none focus:ring-2 focus:ring-sky-500">
               <IdentificationIcon className="w-4 h-4" />
               Meus dados

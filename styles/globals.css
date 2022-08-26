@@ -7,3 +7,15 @@
 html {
   @apply scroll-smooth;
 }
+
+.input {
+  @apply mt-1 focus:ring-sky-700 focus:border-sky-700 block w-full border-gray-300 rounded-md border px-3 focus:outline-none focus:ring-1 h-12 bg-transparent;
+}
+
+.button-green {
+  @apply h-12 flex px-5 items-center rounded-md bg-green-600 w-fit text-white gap-2 hover:bg-green-700 active:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-400;
+}
+
+.button-blue {
+  @apply h-12 flex px-5 items-center rounded-md bg-sky-700 w-fit text-white gap-2 hover:bg-sky-800 active:bg-sky-700 focus:outline-none focus:ring-2 focus:ring-sky-500;
+}
