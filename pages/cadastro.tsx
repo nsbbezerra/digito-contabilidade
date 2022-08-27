@@ -231,7 +231,7 @@ export default function Register() {
             </div>
           </div>
 
-          <button className="button-blue mt-5">
+          <button className="button-green mt-5">
             <InboxArrowDownIcon className="w-4 h-4" />
             Cadastrar
           </button>

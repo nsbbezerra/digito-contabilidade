@@ -12,6 +12,9 @@ import {
   ArrowRightOnRectangleIcon,
   InboxArrowDownIcon,
   IdentificationIcon,
+  EyeIcon,
+  EyeSlashIcon,
+  ArrowLeftOnRectangleIcon,
 } from "@heroicons/react/24/outline";
 import Link from "next/link";
 import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
@@ -23,6 +26,7 @@ export default function Menu() {
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
   const { state: isLoginOpen, setState: setIsLoginOpen } =
     useContext(LoginContext);
+  const [showPass, setShowPass] = useState<boolean>(false);
 
   const MenuItems = () => (
     <div className="items-start gap-7 flex flex-col xl:flex-row xl:items-center">
@@ -94,9 +98,15 @@ export default function Menu() {
                 Cadastre-se
               </DropdownMenu.Item>
             </Link>
-            <DropdownMenu.Item className="text-gray-800 py-1 px-2 rounded-md flex items-center gap-2 hover:bg-sky-700 cursor-pointer hover:text-white active:bg-sky-800 focus:outline-none focus:ring-2 focus:ring-sky-500">
-              <IdentificationIcon className="w-4 h-4" />
-              Meus dados
+            <Link href={"/meusdados/?m=dados"} passHref>
+              <DropdownMenu.Item className="text-gray-800 py-1 px-2 rounded-md flex items-center gap-2 hover:bg-sky-700 cursor-pointer hover:text-white active:bg-sky-800 focus:outline-none focus:ring-2 focus:ring-sky-500">
+                <IdentificationIcon className="w-4 h-4" />
+                Meus dados
+              </DropdownMenu.Item>
+            </Link>
+            <DropdownMenu.Item className="text-red-600 py-1 px-2 rounded-md flex items-center gap-2 hover:bg-red-600 cursor-pointer hover:text-white active:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500">
+              <ArrowLeftOnRectangleIcon className="w-4 h-4" />
+              Sair
             </DropdownMenu.Item>
           </DropdownMenu.Content>
         </DropdownMenu.Portal>
@@ -158,8 +168,8 @@ export default function Menu() {
       >
         <Dialog.Trigger asChild />
         <Dialog.Portal>
-          <Dialog.Overlay className="fixed top-0 right-0 left-0 bottom-0 bg-black z-50 bg-opacity-60 backdrop-blur-sm" />
-          <Dialog.Content className="fixed w-[80%] left-[10%] right-[10%] sm:w-[50%] sm:left-[25%] sm:right-[25%] md:w-[40%] md:left-[30%] md:right-[30%] lg:w-[30%] bg-white shadow-lg rounded-md top-[20%] z-50 lg:left-[35%] lg:right-[35%]">
+          <Dialog.Overlay className="fixed top-0 right-0 left-0 bottom-0 bg-black z-50 bg-opacity-50 backdrop-blur-sm" />
+          <Dialog.Content className="fixed w-[80%] left-[10%] right-[10%] sm:w-[50%] sm:left-[25%] sm:right-[25%] md:w-[40%] md:left-[30%] md:right-[30%] lg:w-[30%] bg-white shadow-lg rounded-md top-[15%] z-50 lg:left-[35%] lg:right-[35%]">
             <Dialog.Title className="px-4 py-3 text-lg font-semibold">
               Login
             </Dialog.Title>
@@ -170,24 +180,39 @@ export default function Menu() {
               <XMarkIcon />
             </Dialog.Close>
 
-            <div className="p-5 flex flex-col gap-3">
-              <div>
+            <div className="p-5 flex flex-col gap-3 items-center">
+              <div className="w-full">
                 <label>Usuário</label>
                 <input type="text" className="input" placeholder={"Usuário"} />
               </div>
-              <div>
+              <div className="w-full relative">
                 <label>Senha</label>
+
                 <input
-                  type="password"
+                  type={showPass ? "text" : "password"}
                   className="input"
                   placeholder={"Senha"}
                 />
+                <button
+                  className="absolute bottom-3 right-3"
+                  onClick={() => setShowPass(!showPass)}
+                >
+                  {showPass ? (
+                    <EyeSlashIcon className="w-6 h-6" />
+                  ) : (
+                    <EyeIcon className="w-6 h-6" />
+                  )}
+                </button>
               </div>
 
               <button className="button-green-full mt-3">
                 <ArrowRightOnRectangleIcon className="w-5 h-5" />
                 Login
               </button>
+
+              <a className="block w-fit hover:underline text-gray-600 text-center cursor-pointer">
+                Esqueci minha senha
+              </a>
             </div>
           </Dialog.Content>
         </Dialog.Portal>
