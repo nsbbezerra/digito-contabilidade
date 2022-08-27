@@ -14,6 +14,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import ReactInputMask from "react-input-mask";
 import * as ToggleGroup from "@radix-ui/react-toggle-group";
+import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
 
 export default function MyData() {
   const { m } = useRouter().query;
@@ -31,7 +32,37 @@ export default function MyData() {
         MEUS DADOS
       </div>
 
-      <section className="container mx-auto px-10 lg:px-20 py-16 grid grid-cols-1 lg:grid-cols-4 gap-10">
+      <section className="container mx-auto px-10 lg:px-20 py-16 grid grid-cols-1 lg:grid-cols-4 gap-5 lg:gap-10">
+        <DropdownMenu.Root>
+          <DropdownMenu.Trigger className="bg-green-600 w-fit px-5 flex items-center gap-2 rounded-md text-white h-10 hover:bg-green-700 active:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-500 lg:hidden">
+            <Bars3Icon className="w-4 h-4" />
+            Menu
+          </DropdownMenu.Trigger>
+
+          <DropdownMenu.Portal>
+            <DropdownMenu.Content className="bg-white backdrop-blur-sm bg-opacity-90 rounded-md z-50 py-2 px-2 border shadow-lg w-48 ml-10 mt-1">
+              <DropdownMenu.Label />
+              <Link href={"?m=dados"} passHref>
+                <DropdownMenu.Item className="text-gray-800 py-2 px-2 rounded-md flex items-center gap-2 hover:bg-sky-700 cursor-pointer hover:text-white active:bg-sky-800 focus:outline-none focus:ring-2 focus:ring-sky-500">
+                  <IdentificationIcon className="w-4 h-4" />
+                  Meus dados
+                </DropdownMenu.Item>
+              </Link>
+              <Link href={"?m=assinaturas"} passHref>
+                <DropdownMenu.Item className="text-gray-800 py-2 px-2 rounded-md flex items-center gap-2 hover:bg-sky-700 cursor-pointer hover:text-white active:bg-sky-800 focus:outline-none focus:ring-2 focus:ring-sky-500">
+                  <ShoppingBagIcon className="w-4 h-4" />
+                  Minhas assinaturas
+                </DropdownMenu.Item>
+              </Link>
+              <Link href={"?m=compras"} passHref>
+                <DropdownMenu.Item className="text-gray-800 py-2 px-2 rounded-md flex items-center gap-2 hover:bg-sky-700 cursor-pointer hover:text-white active:bg-sky-800 focus:outline-none focus:ring-2 focus:ring-sky-500">
+                  <ShoppingCartIcon className="w-4 h-4" />
+                  Minhas compras
+                </DropdownMenu.Item>
+              </Link>
+            </DropdownMenu.Content>
+          </DropdownMenu.Portal>
+        </DropdownMenu.Root>
         <div className="border rounded-md shadow-sm h-fit hidden lg:block">
           <span className="flex items-center gap-2 p-2 border-b text-sky-700 font-bold">
             <Bars3Icon className="w-5 h-5" />
@@ -59,10 +90,10 @@ export default function MyData() {
         </div>
         <div className="lg:col-span-3">
           {m === "dados" && (
-            <section className="p-5 shadow-sm border rounded-md">
+            <section className="lg:p-5 shadow-sm lg:border rounded-md">
               <ToggleGroup.Root
                 type="single"
-                className="inline-flex mb-3"
+                className="inline-flex"
                 onValueChange={(e) => setRegisterMode(e)}
                 value={registerMode}
               >
