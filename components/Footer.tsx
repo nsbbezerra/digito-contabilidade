@@ -1,12 +1,88 @@
 import Image from "next/image";
-import { Fragment } from "react";
-import { InboxIcon, PhoneIcon } from "@heroicons/react/24/outline";
+import {
+  InboxIcon,
+  PhoneIcon,
+  PaperAirplaneIcon,
+} from "@heroicons/react/24/outline";
 import Link from "next/link";
 import { configs } from "../configs";
 
 export default function Footer() {
   return (
-    <Fragment>
+    <section className="bg-blue-50">
+      <div className="container mx-auto max-w-4xl px-10 py-16">
+        <h4 className="font-bold text-4xl border-b-2 border-b-green-600 w-fit pb-2 mb-5">
+          Fale conosco
+        </h4>
+
+        <div className="flex flex-col gap-3">
+          <div>
+            <label
+              htmlFor="first-name"
+              className="block text-sm font-medium text-gray-700"
+            >
+              Seu nome
+            </label>
+            <input
+              type="text"
+              name="first-name"
+              id="first-name"
+              autoComplete="given-name"
+              className="mt-1 block w-full rounded-md border border-gray-300 shadow-sm focus:border-sky-700 focus:ring-sky-700 sm:text-sm focus:outline-none p-3 focus:ring-1"
+            />
+          </div>
+          <div className="grid grid-cols-2 gap-3">
+            <div>
+              <label
+                htmlFor="first-name"
+                className="block text-sm font-medium text-gray-700"
+              >
+                Seu email
+              </label>
+              <input
+                type="text"
+                name="first-name"
+                id="first-name"
+                autoComplete="given-name"
+                className="mt-1 block w-full rounded-md border border-gray-300 shadow-sm focus:border-sky-700 focus:ring-sky-700 sm:text-sm focus:outline-none p-3 focus:ring-1"
+              />
+            </div>
+            <div>
+              <label
+                htmlFor="first-name"
+                className="block text-sm font-medium text-gray-700"
+              >
+                Seu whatsapp
+              </label>
+              <input
+                type="text"
+                name="first-name"
+                id="first-name"
+                autoComplete="given-name"
+                className="mt-1 block w-full rounded-md border border-gray-300 shadow-sm focus:border-sky-700 focus:ring-sky-700 sm:text-sm focus:outline-none p-3 focus:ring-1"
+              />
+            </div>
+          </div>
+          <div>
+            <label
+              htmlFor="first-name"
+              className="block text-sm font-medium text-gray-700"
+            >
+              Seu mensagem
+            </label>
+            <textarea
+              name="first-name"
+              id="first-name"
+              className="mt-1 block w-full rounded-md border border-gray-300 shadow-sm focus:border-sky-700 focus:ring-sky-700 sm:text-sm focus:outline-none p-3 focus:ring-1 resize-none"
+              rows={5}
+            />
+          </div>
+          <button className="bg-green-600 w-fit px-5 flex items-center rounded-md shadow-lg text-white text-lg h-12 hover:bg-green-700 active:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-500 gap-2">
+            <PaperAirplaneIcon className="w-5 h-5" />
+            Enviar mensagem
+          </button>
+        </div>
+      </div>
       <footer className="w-full bg-gray-900 pt-16 pb-10" id="contato">
         <div className="container mx-auto px-10 lg:px-20">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
@@ -94,6 +170,6 @@ export default function Footer() {
           </p>
         </div>
       </footer>
-    </Fragment>
+    </section>
   );
 }

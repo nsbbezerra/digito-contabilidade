@@ -7,17 +7,12 @@ import {
   TagIcon,
   PhoneIcon,
   PencilIcon,
-  UserIcon,
   XMarkIcon,
   ArrowRightOnRectangleIcon,
-  InboxArrowDownIcon,
-  IdentificationIcon,
   EyeIcon,
   EyeSlashIcon,
-  ArrowLeftOnRectangleIcon,
 } from "@heroicons/react/24/outline";
 import Link from "next/link";
-import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
 import * as Dialog from "@radix-ui/react-dialog";
 
 import LoginContext from "../context/login";
@@ -69,48 +64,12 @@ export default function Menu() {
       <Link href="#contato" passHref>
         <a
           href="#"
-          className="text-sky-700 cursor-pointer hover:text-sky-800 active:text-sky-700 flex items-center gap-1 font-bold"
+          className="text-sky-700 cursor-pointer hover:text-sky-800 active:text-sky-700 flex items-center gap-1"
         >
           <PhoneIcon className="w-4 h-4" />
           Contato
         </a>
       </Link>
-
-      <DropdownMenu.Root>
-        <DropdownMenu.Trigger className="bg-green-600 w-fit px-5 flex items-center gap-2 rounded-md text-white h-10 hover:bg-green-700 active:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-500">
-          <UserIcon className="w-4 h-4" />
-          Área do cliente
-        </DropdownMenu.Trigger>
-
-        <DropdownMenu.Portal>
-          <DropdownMenu.Content className="bg-white backdrop-blur-sm bg-opacity-90 rounded-md z-50 py-2 px-2 border shadow-lg mt-3 w-48">
-            <DropdownMenu.Label />
-            <DropdownMenu.Item
-              className="text-gray-800 py-1 px-2 rounded-md flex items-center gap-2 hover:bg-sky-700 cursor-pointer hover:text-white active:bg-sky-800 focus:outline-none focus:ring-2 focus:ring-sky-500"
-              onClick={() => setIsLoginOpen({ isOpen: !isLoginOpen.isOpen })}
-            >
-              <ArrowRightOnRectangleIcon className="w-4 h-4" />
-              Login
-            </DropdownMenu.Item>
-            <Link href={"/cadastro"} passHref>
-              <DropdownMenu.Item className="text-gray-800 py-1 px-2 rounded-md flex items-center gap-2 hover:bg-sky-700 cursor-pointer hover:text-white active:bg-sky-800 focus:outline-none focus:ring-2 focus:ring-sky-500">
-                <InboxArrowDownIcon className="w-4 h-4" />
-                Cadastre-se
-              </DropdownMenu.Item>
-            </Link>
-            <Link href={"/meusdados/?m=dados"} passHref>
-              <DropdownMenu.Item className="text-gray-800 py-1 px-2 rounded-md flex items-center gap-2 hover:bg-sky-700 cursor-pointer hover:text-white active:bg-sky-800 focus:outline-none focus:ring-2 focus:ring-sky-500">
-                <IdentificationIcon className="w-4 h-4" />
-                Meus dados
-              </DropdownMenu.Item>
-            </Link>
-            <DropdownMenu.Item className="text-red-600 py-1 px-2 rounded-md flex items-center gap-2 hover:bg-red-600 cursor-pointer hover:text-white active:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500">
-              <ArrowLeftOnRectangleIcon className="w-4 h-4" />
-              Sair
-            </DropdownMenu.Item>
-          </DropdownMenu.Content>
-        </DropdownMenu.Portal>
-      </DropdownMenu.Root>
     </div>
   );
 
@@ -131,7 +90,7 @@ export default function Menu() {
             </div>
             <div className="flex flex-col">
               <span className="text-sky-700 text-sm -mb-1 select-none">
-                DÍGITOS
+                DÍGITO
               </span>
               <span className="text-sky-700 font-bold text-base select-none ">
                 CONTABILIDADE

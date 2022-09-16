@@ -1,5 +1,7 @@
 import { Fragment } from "react";
 import Image from "next/image";
+import Link from "next/link";
+import { configs } from "../configs";
 
 export default function Panel() {
   return (
@@ -21,7 +23,7 @@ export default function Panel() {
               </div>
 
               <div className="flex md:gap-3 flex-col sm:flex-row sm:gap-3 items-center justify-center text-4xl md:text-5xl">
-                <span className="block text-sky-700">DÍGITOS</span>
+                <span className="block text-sky-700">DÍGITO</span>
                 <span className="block text-sky-700 font-bold">
                   CONTABILIDADE
                 </span>
@@ -37,12 +39,14 @@ export default function Panel() {
               <span className="text-green-700 font-bold">conhecimento</span>
             </h1>
 
-            <a
-              href="#"
-              className="bg-green-600 w-fit px-5 flex items-center rounded-md shadow-lg text-white text-lg h-12 mt-5 hover:bg-green-700 active:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-500"
-            >
-              Seja nosso cliente
-            </a>
+            <Link href={`https://wa.me/${configs.whatsapp}`} passHref>
+              <a
+                target={"_blank"}
+                className="bg-green-600 w-fit px-5 flex items-center rounded-md shadow-lg text-white text-lg h-12 mt-5 hover:bg-green-700 active:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-500"
+              >
+                Seja nosso cliente
+              </a>
+            </Link>
           </div>
         </div>
       </header>

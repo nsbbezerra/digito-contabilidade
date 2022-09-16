@@ -80,7 +80,7 @@ const Home: NextPage = () => {
         </h3>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-5 mt-10">
-          <div className="flex flex-col items-center justify-center gap-2 p-2 rounded-md border">
+          <div className="flex flex-col items-center justify-center gap-2 p-2">
             <div className="w-fit">
               <Image
                 src="/img/empresa.png"
@@ -93,7 +93,7 @@ const Home: NextPage = () => {
             <span className="text-center">SOCIETÁRIO</span>
           </div>
 
-          <div className="flex flex-col items-center justify-center gap-2 p-2 rounded-md border">
+          <div className="flex flex-col items-center justify-center gap-2 p-2">
             <div className="w-fit">
               <Image
                 src="/img/contabilidade.png"
@@ -106,7 +106,7 @@ const Home: NextPage = () => {
             <span className="text-center">CONTABILIDADE</span>
           </div>
 
-          <div className="flex flex-col items-center justify-center gap-2 p-2 rounded-md border">
+          <div className="flex flex-col items-center justify-center gap-2 p-2">
             <div className="w-fit">
               <Image
                 src="/img/recibo.png"
@@ -119,7 +119,7 @@ const Home: NextPage = () => {
             <span className="text-center">FISCAL / TRIBUTÁRIO</span>
           </div>
 
-          <div className="flex flex-col items-center justify-center gap-2 p-2 rounded-md border">
+          <div className="flex flex-col items-center justify-center gap-2 p-2">
             <div className="w-fit">
               <Image
                 src="/img/leao.png"
@@ -132,7 +132,7 @@ const Home: NextPage = () => {
             <span className="text-center">IMPOSTO DE RENDA</span>
           </div>
 
-          <div className="flex flex-col items-center justify-center gap-2 p-2 rounded-md border">
+          <div className="flex flex-col items-center justify-center gap-2 p-2">
             <div className="w-fit">
               <Image
                 src="/img/pessoal.png"
@@ -147,7 +147,7 @@ const Home: NextPage = () => {
         </div>
       </section>
 
-      <section className="w-full bg-blue-50 py-16" id="artigos">
+      <section className="w-full py-16" id="artigos">
         <div className="container mx-auto px-10 lg:px-20">
           <h4 className="font-bold text-4xl border-b-2 border-b-green-600 w-fit pb-2 mb-5">
             Artigos recentes
