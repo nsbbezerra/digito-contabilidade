@@ -90,7 +90,7 @@ export default function Menu() {
             </div>
             <div className="flex flex-col">
               <span className="text-sky-700 text-sm -mb-1 select-none">
-                DÍGITO
+                DÍGITOS
               </span>
               <span className="text-sky-700 font-bold text-base select-none ">
                 CONTABILIDADE

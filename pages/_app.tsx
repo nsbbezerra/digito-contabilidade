@@ -1,12 +1,16 @@
 import "../styles/globals.css";
 import type { AppProps } from "next/app";
 import GlobalContext from "../context/index";
+import { ApolloProvider } from "@apollo/client";
+import { client } from "../lib/apollo";
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <GlobalContext>
-      <Component {...pageProps} />
-    </GlobalContext>
+    <ApolloProvider client={client}>
+      <GlobalContext>
+        <Component {...pageProps} />
+      </GlobalContext>
+    </ApolloProvider>
   );
 }
 

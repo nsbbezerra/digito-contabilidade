@@ -1,18 +1,51 @@
-import type { NextPage } from "next";
+import type { GetStaticProps, NextPage } from "next";
 import Image from "next/image";
 import { Fragment } from "react";
 import HeaderApp from "../components/Head";
 import Menu from "../components/Menu";
 import * as statsAnimation from "../assets/stats.json";
 import * as teamAnimation from "../assets/team.json";
+import * as meetingAnimation from "../assets/meeting.json";
+import * as whatsappAnimation from "../assets/whatsapp.json";
+import * as callAnimation from "../assets/call.json";
 import ReactLottie from "../components/Lottie";
 import Link from "next/link";
 import Footer from "../components/Footer";
 import { configs } from "../configs";
 import Panel from "../components/Panel";
 import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
+import { client } from "../lib/apollo";
+import { FIND_POSTS } from "../graphql/posts";
 
-const Home: NextPage = () => {
+interface ImageProps {
+  url: string;
+}
+
+interface AuthorProps {
+  name: string;
+  picture: ImageProps;
+}
+
+interface ContentProps {
+  html: string;
+}
+
+interface PostsProps {
+  author: AuthorProps;
+  coverImage: ImageProps;
+  slug: string;
+  tags: string[];
+  title: string;
+  content: ContentProps;
+  date: string;
+  id: string;
+}
+
+interface Props {
+  posts: PostsProps[];
+}
+
+const Home: NextPage<Props> = ({ posts }) => {
   return (
     <Fragment>
       <HeaderApp title="Digitos Contabilidade" />
@@ -147,6 +180,54 @@ const Home: NextPage = () => {
         </div>
       </section>
 
+      <section className="w-full bg-blue-50 py-16">
+        <div className="container mx-auto px-10 lg:px-20">
+          <h4 className="font-bold text-4xl border-b-2 border-b-green-600 w-fit pb-2">
+            Canais de atendimento
+          </h4>
+          <span className="block mb-10">
+            Você escolhe como quer ser atendido
+          </span>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-10 justify-items-center">
+            <div className="flex flex-col items-center justify-center">
+              <div className="w-56 rounded-full shadow bg-white p-3">
+                <ReactLottie
+                  animation={meetingAnimation}
+                  width="100%"
+                  height={"100%"}
+                />
+              </div>
+              <span className="text-xl mt-3 font-semibold">VÍDEO CHAMADA</span>
+            </div>
+
+            <div className="flex flex-col items-center justify-center">
+              <div className="w-56 rounded-full shadow bg-white p-3">
+                <ReactLottie
+                  animation={whatsappAnimation}
+                  width="100%"
+                  height={"100%"}
+                />
+              </div>
+              <span className="text-xl mt-3 font-semibold">WHATSAPP</span>
+            </div>
+
+            <div className="flex flex-col items-center justify-center">
+              <div className="w-56 rounded-full shadow bg-white p-3">
+                <ReactLottie
+                  animation={callAnimation}
+                  width="100%"
+                  height={"100%"}
+                />
+              </div>
+              <span className="text-xl mt-3 font-semibold">
+                LIGAÇÃO TELEFÔNICA
+              </span>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section className="w-full py-16" id="artigos">
         <div className="container mx-auto px-10 lg:px-20">
           <h4 className="font-bold text-4xl border-b-2 border-b-green-600 w-fit pb-2 mb-5">
@@ -154,72 +235,28 @@ const Home: NextPage = () => {
           </h4>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-            <Link href="/" passHref>
-              <a className="hover:underline">
-                <div className="bg-white rounded-md border overflow-hidden shadow-sm">
-                  <div className="w-full h-fit">
-                    <Image
-                      src="https://img.freepik.com/fotos-gratis/empresarios-que-trabalham-em-financas-e-contabilidade-analisar-financas_74952-1411.jpg?w=2000"
-                      width={1366}
-                      height={850}
-                      objectFit="cover"
-                      alt="Real Contabilidade"
-                    />
-                  </div>
+            {posts.map((post) => (
+              <Link href={post.id} passHref key={post.id}>
+                <a className="hover:underline">
+                  <div className="bg-white rounded-md border overflow-hidden shadow-sm h-full">
+                    <div className="w-full h-fit">
+                      <Image
+                        src={post.coverImage.url}
+                        width={1366}
+                        height={850}
+                        objectFit="cover"
+                        alt="Real Contabilidade"
+                      />
+                    </div>
 
-                  <div className="p-3">
-                    <span className="font-bold text-lg">
-                      A IMPORTÂNCIA DE UM BOM PLANEJAMENTO
-                    </span>
-                    <p className="text-gray-700 mt-2">20 de Setembro de 2022</p>
+                    <div className="p-3">
+                      <span className="font-bold text-lg">{post.title}</span>
+                      <p className="text-gray-700 mt-2">{post.date}</p>
+                    </div>
                   </div>
-                </div>
-              </a>
-            </Link>
-            <Link href="/" passHref>
-              <a className="hover:underline">
-                <div className="bg-white rounded-md border overflow-hidden shadow-sm">
-                  <div className="w-full h-fit">
-                    <Image
-                      src="https://img.freepik.com/fotos-gratis/empresarios-que-trabalham-em-financas-e-contabilidade-analisar-financas_74952-1411.jpg?w=2000"
-                      width={1366}
-                      height={850}
-                      objectFit="cover"
-                      alt="Real Contabilidade"
-                    />
-                  </div>
-
-                  <div className="p-3">
-                    <span className="font-bold text-lg">
-                      A IMPORTÂNCIA DE UM BOM PLANEJAMENTO
-                    </span>
-                    <p className="text-gray-700 mt-2">20 de Setembro de 2022</p>
-                  </div>
-                </div>
-              </a>
-            </Link>
-            <Link href="/" passHref>
-              <a className="hover:underline">
-                <div className="bg-white rounded-md border overflow-hidden shadow-sm">
-                  <div className="w-full h-fit">
-                    <Image
-                      src="https://img.freepik.com/fotos-gratis/empresarios-que-trabalham-em-financas-e-contabilidade-analisar-financas_74952-1411.jpg?w=2000"
-                      width={1366}
-                      height={850}
-                      objectFit="cover"
-                      alt="Real Contabilidade"
-                    />
-                  </div>
-
-                  <div className="p-3">
-                    <span className="font-bold text-lg">
-                      A IMPORTÂNCIA DE UM BOM PLANEJAMENTO
-                    </span>
-                    <p className="text-gray-700 mt-2">20 de Setembro de 2022</p>
-                  </div>
-                </div>
-              </a>
-            </Link>
+                </a>
+              </Link>
+            ))}
           </div>
 
           <Link href="/artigos" passHref>
@@ -237,3 +274,14 @@ const Home: NextPage = () => {
 };
 
 export default Home;
+
+export const getStaticProps: GetStaticProps = async () => {
+  const posts = await client.query({ query: FIND_POSTS });
+
+  return {
+    props: {
+      posts: posts.data.posts || [],
+    },
+    revalidate: 60,
+  };
+};

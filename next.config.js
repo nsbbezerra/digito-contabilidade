@@ -9,6 +9,7 @@ const nextConfig = {
       "localhost",
       "vps36066.publiccloud.com.br",
       "storage.googleapis.com",
+      "media.graphassets.com",
     ],
   },
   trailingSlash: true,

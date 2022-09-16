@@ -23,7 +23,7 @@ export default function Panel() {
               </div>
 
               <div className="flex md:gap-3 flex-col sm:flex-row sm:gap-3 items-center justify-center text-4xl md:text-5xl">
-                <span className="block text-sky-700">DÍGITO</span>
+                <span className="block text-sky-700">DÍGITOS</span>
                 <span className="block text-sky-700 font-bold">
                   CONTABILIDADE
                 </span>
