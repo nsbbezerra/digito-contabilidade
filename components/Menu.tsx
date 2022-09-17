@@ -52,15 +52,6 @@ export default function Menu() {
           Serviços
         </a>
       </Link>
-      <Link href="/artigos" passHref>
-        <a
-          href="#"
-          className="text-sky-700 cursor-pointer hover:text-sky-800 active:text-sky-700 flex items-center gap-1"
-        >
-          <PencilIcon className="w-4 h-4" />
-          Artigos
-        </a>
-      </Link>
       <Link href="#contato" passHref>
         <a
           href="#"

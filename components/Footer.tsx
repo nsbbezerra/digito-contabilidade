@@ -74,7 +74,7 @@ export default function Footer() {
 
   return (
     <Fragment>
-      <section className="bg-blue-50" id="contato">
+      <section id="contato">
         <div className="container mx-auto max-w-4xl px-10 py-16">
           <h4 className="font-bold text-4xl border-b-2 border-b-green-600 w-fit pb-2 mb-5">
             Fale conosco

@@ -1,6 +1,6 @@
-import type { GetStaticProps, NextPage } from "next";
+import type { NextPage } from "next";
 import Image from "next/image";
-import { Fragment } from "react";
+import { Fragment, useEffect, useMemo, useState } from "react";
 import HeaderApp from "../components/Head";
 import Menu from "../components/Menu";
 import * as statsAnimation from "../assets/stats.json";
@@ -8,44 +8,26 @@ import * as teamAnimation from "../assets/team.json";
 import * as meetingAnimation from "../assets/meeting.json";
 import * as whatsappAnimation from "../assets/whatsapp.json";
 import * as callAnimation from "../assets/call.json";
+import * as megaphoneAnimation from "../assets/megaphone.json";
 import ReactLottie from "../components/Lottie";
 import Link from "next/link";
 import Footer from "../components/Footer";
 import { configs } from "../configs";
 import Panel from "../components/Panel";
-import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
-import { client } from "../lib/apollo";
-import { FIND_POSTS } from "../graphql/posts";
+import * as Dialog from "@radix-ui/react-dialog";
+import { XMarkIcon } from "@heroicons/react/24/outline";
 
-interface ImageProps {
-  url: string;
-}
+const Home: NextPage = () => {
+  const [dialog, setDialog] = useState<boolean>(false);
 
-interface AuthorProps {
-  name: string;
-  picture: ImageProps;
-}
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setDialog(true);
+    }, 5000);
 
-interface ContentProps {
-  html: string;
-}
+    return () => clearTimeout(timer);
+  }, []);
 
-interface PostsProps {
-  author: AuthorProps;
-  coverImage: ImageProps;
-  slug: string;
-  tags: string[];
-  title: string;
-  content: ContentProps;
-  date: string;
-  id: string;
-}
-
-interface Props {
-  posts: PostsProps[];
-}
-
-const Home: NextPage<Props> = ({ posts }) => {
   return (
     <Fragment>
       <HeaderApp title="Digitos Contabilidade" />
@@ -228,60 +210,59 @@ const Home: NextPage<Props> = ({ posts }) => {
         </div>
       </section>
 
-      <section className="w-full py-16" id="artigos">
-        <div className="container mx-auto px-10 lg:px-20">
-          <h4 className="font-bold text-4xl border-b-2 border-b-green-600 w-fit pb-2 mb-5">
-            Artigos recentes
-          </h4>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-            {posts.map((post) => (
-              <Link href={post.id} passHref key={post.id}>
-                <a className="hover:underline">
-                  <div className="bg-white rounded-md border overflow-hidden shadow-sm h-full">
-                    <div className="w-full h-fit">
-                      <Image
-                        src={post.coverImage.url}
-                        width={1366}
-                        height={850}
-                        objectFit="cover"
-                        alt="Real Contabilidade"
-                      />
-                    </div>
-
-                    <div className="p-3">
-                      <span className="font-bold text-lg">{post.title}</span>
-                      <p className="text-gray-700 mt-2">{post.date}</p>
-                    </div>
-                  </div>
-                </a>
-              </Link>
-            ))}
-          </div>
-
-          <Link href="/artigos" passHref>
-            <a className="mt-5 flex items-center gap-2 text-sky-700 hover:underline text-lg cursor-pointer font-semibold w-fit">
-              <MagnifyingGlassIcon className="w-5 h-5" />
-              Veja mais
-            </a>
-          </Link>
-        </div>
-      </section>
-
       <Footer />
+
+      <Dialog.Root open={dialog} onOpenChange={() => setDialog(!dialog)}>
+        <Dialog.Trigger asChild />
+        <Dialog.Portal>
+          <Dialog.Overlay className="fixed top-0 bottom-0 left-0 right-0 bg-black bg-opacity-40 backdrop-blur-sm z-50" />
+          <Dialog.Content className="fixed w-[80%] left-[10%] right-[10%] bg-white shadow-lg rounded-md top-[10vh] z-50 max-h-[80vh] lg:w-[60%] lg:left-[20%] lg:right-[20%] h-[80vh] overflow-hidden">
+            <Dialog.Close
+              asChild
+              className="absolute bg-black bg-opacity-10 rounded-full h-10 w-10 p-3 cursor-pointer hover:bg-opacity-20 active:bg-opacity-10 right-3 top-3"
+            >
+              <XMarkIcon />
+            </Dialog.Close>
+            <div className="grid grid-cols-1 md:grid-cols-2 h-full">
+              <div className="bg-gradient-to-tr from-sky-50 to-sky-300 w-full h-full flex flex-col justify-center items-center gap-4 p-2">
+                <div className="w-40 md:w-3/4">
+                  <ReactLottie
+                    animation={megaphoneAnimation}
+                    width="100%"
+                    height={"100%"}
+                  />
+                </div>
+                <span className="py-2 px-5 lg:py-3 bg-sky-700 rounded-full flex items-center justify-center border-4 border-white text-white font-bold md:text-2xl xl:text-4xl -mt-10 shadow-lg text-center">
+                  50% de desconto
+                </span>
+              </div>
+
+              <div className="w-full h-full flex flex-col items-center justify-center p-5 gap-3 md:gap-5 lg:gap-10">
+                <h4 className="font-extrabold text-2xl md:text-5xl border-b-2 border-b-green-600 w-fit pb-2">
+                  ATENÇÃO
+                </h4>
+                <p className="text-center md:text-2xl">
+                  Você ganhou 50% de desconto na abertura do seu CNPJ
+                </p>
+                <Link
+                  href={`https://wa.me/${configs.whatsapp}?text=Olá quero abrir minha empresa com 50% de desconto`}
+                  passHref
+                >
+                  <a
+                    target={"_blank"}
+                    href="#"
+                    className="bg-green-600 w-fit px-5 flex items-center rounded-md shadow-lg text-white text-lg h-12 hover:bg-green-700 active:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-500"
+                  >
+                    Quero meu desconto
+                  </a>
+                </Link>
+              </div>
+            </div>
+          </Dialog.Content>
+        </Dialog.Portal>
+      </Dialog.Root>
     </Fragment>
   );
 };
 
 export default Home;
-
-export const getStaticProps: GetStaticProps = async () => {
-  const posts = await client.query({ query: FIND_POSTS });
-
-  return {
-    props: {
-      posts: posts.data.posts || [],
-    },
-    revalidate: 60,
-  };
-};
