@@ -35,8 +35,9 @@ export default function Footer() {
 
   useEffect(() => {
     if (data) {
+      console.log(data);
       const id = data.createMessage.id;
-      publishMessage({ variables: { id } });
+      publishMessage({ variables: { id: id } });
       openToast("Mensagem enviada com sucesso", "success");
       setName("");
       setPhone("");
@@ -45,6 +46,7 @@ export default function Footer() {
     }
     if (error) {
       openToast("Ocorreu um erro ao enviar a mensagem", "error");
+      console.log(error);
     }
   }, [data, error, publishMessage]);
 

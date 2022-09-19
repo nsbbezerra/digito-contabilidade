@@ -29,4 +29,26 @@ const PUBLISH_MESSAGE = gql`
   }
 `;
 
-export { CREATE_MESSAGE, PUBLISH_MESSAGE };
+const FIND_MESSAGES = gql`
+  query FindMessages {
+    messages(orderBy: createdAt_DESC) {
+      id
+      name
+      email
+      phone
+      message
+      readed
+      createdAt
+    }
+  }
+`;
+
+const SET_READED = gql`
+  mutation UpdateReaded($id: ID!) {
+    updateMessage(where: { id: $id }, data: { readed: true }) {
+      id
+    }
+  }
+`;
+
+export { CREATE_MESSAGE, PUBLISH_MESSAGE, FIND_MESSAGES, SET_READED };
